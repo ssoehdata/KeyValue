@@ -1,4 +1,10 @@
 #include<kv.h>
+#define TOMBSTONE ((char *)0x1)
+
+typedef struct {
+    char *key;
+    char *value;
+} kv_entry_t;
 
 /* 
   fn kv_put 
@@ -29,8 +35,19 @@ int kv_put(kv_t *db, char *key, char *value){
   if (!db || !key || !value) return -1;
 }
 
+typedef struct {
+    char *key;
+    char *value;
+} kv_entry_t;
+
+
+
 kv_t *kv_init(size_t capacity) {
   if (capacity == 0) return NULL;
+  int    kv_put(kv_t *db, const char *key, const char *value);
+ char  *kv_get(kv_t *db, const char *key);
+ int    kv_delete(kv_t *db, const char *key);
+ void   kv_free(kv_t *db);
 
   kv_t *table = malloc(sizeof(kv_t));
   if (table == NULL) {
